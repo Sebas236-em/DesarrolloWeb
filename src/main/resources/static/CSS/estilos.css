@@ -1,0 +1,565 @@
+/* CAROUSEL */
+.carousel-item {
+    background: radial-gradient(circle, #1a0b3d 0%, #000000 100%);
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 450px;
+    object-fit: contain;
+    background-color: transparent;
+}
+
+.carousel-item a {
+    cursor: pointer;
+    display: block;
+}
+
+/* BODY */
+body {
+    background-color: #fff;
+    color: #000000;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+/* BARRA DE NAVEGACIÓN */
+.navbar .bi {
+    transition: color 0.3s ease;
+    color: #fff;
+}
+
+.navbar .bi:hover {
+    color: #ff0000;
+}
+
+/* Barra de Busqueda */
+
+.resultados-busqueda-phantom {
+    z-index: 1060 !important;
+    background-color: #ffffff !important;
+    border: 1px solid #dc3545 !important;
+    max-height: 400px;
+    overflow-y: auto;
+    left: 0;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+}
+
+.suggestion-item {
+    color: #000000 !important;
+    padding: 10px 15px;
+    transition: background 0.2s;
+}
+
+.suggestion-item:hover {
+    background-color: #f8d7da !important;
+    cursor: pointer;
+}
+
+/*  MODAL  */
+.modal-content input::placeholder {
+    color: #ccc;
+}
+
+/* NOSOTROS  */
+#nosotros img {
+    transition: transform 0.5s ease;
+}
+
+#nosotros img:hover {
+    transform: scale(1.02);
+}
+
+/*  FOOTER  */
+footer a {
+    transition: 0.3s;
+}
+
+footer a:hover {
+    color: #ff0000 !important;
+}
+
+footer .bi-facebook:hover { color: #1877f2 !important; }
+footer .bi-instagram:hover { color: #e4405f !important; }
+footer .bi-tiktok:hover { color: #00f2ea !important; }
+
+
+footer {
+    background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+}
+
+/* LINKS */
+.footer-link {
+    color: #aaa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #ff0000;
+    padding-left: 5px;
+}
+
+/* REDES */
+.social-icon {
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.2);
+}
+
+
+footer input {
+    border-radius: 50px;
+    padding-left: 15px;
+}
+
+
+footer input::placeholder {
+    color: #bbb !important;
+    opacity: 1;
+}
+
+
+footer input:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+/* BOTÓN */
+footer button {
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+footer button:hover {
+    transform: scale(1.1);
+}
+
+/* LINEA */
+footer hr {
+    opacity: 0.2;
+}
+
+
+footer h4, footer h6 {
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+/*  PROMOCIONES  */
+.img-promo {
+    width: 100%;
+    max-height: 180px;
+    object-fit: contain;
+}
+
+.section-title {
+    color: #000000;
+    font-weight: bold;
+}
+
+.underline {
+    width: 60px;
+    height: 4px;
+    background-color: #ffffff;
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
+.product-card {
+    background-color: #2c2b2b;
+    border-radius: 15px;
+    padding: 15px;
+    position: relative;
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #8d8d8d;
+    color: white;
+    padding: 3px 8px;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+.product-img {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.brand {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-top: 10px;
+}
+
+.product-title {
+    font-size: 15px;
+    margin: 5px 0;
+    color: white;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+.new-price {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+}
+#registro-main .form-control::placeholder {
+    color: #ccc !important;
+    opacity: 1;
+}
+
+#registro-main .form-control:focus {
+    background-color: #000 !important;
+    box-shadow: none;
+    border-color: #dc3545 !important;
+}
+#registro-main .form-control {
+    margin-bottom: 0;
+}
+
+#registro-main .mb-3 {
+    margin-bottom: 1rem !important;
+}
+/*  CARRITO */
+.cart-img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #f8f8f8;
+    padding: 4px;
+}
+.resumen-card {
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.10);
+    background: #fff;
+}
+.qty-input {
+    width: 60px;
+    text-align: center;
+}
+.btn-eliminar {
+    background: transparent;
+    border: none;
+    color: #cc0000;
+    font-size: 1.2rem;
+    transition: color .2s;
+}
+.btn-eliminar:hover { color: #8b0000; }
+.btn-comprar {
+    background: #1a0b3d;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 10px;
+    letter-spacing: 0.5px;
+    transition: background .2s;
+}
+.btn-comprar:hover { background: #cc0000; color: #fff; }
+.empty-cart { text-align: center; padding: 80px 20px; color: #888; }
+.empty-cart i { font-size: 72px; }
+
+/* TARJETAS (GAMER) */
+.product-card {
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    padding: 15px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+.product-img-wrap {
+    width: 100%;
+    height: 200px;
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+.product-img-wrap img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+.badge-categoria {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: #1a0b3d;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 20px;
+    align-self: flex-start;
+    margin-bottom: 10px;
+}
+.product-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 5px 0;
+    color: black !important;
+    min-height: 45px;
+}
+.product-price {
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+.btn-add {
+    background: #1a0b3d;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+    width: 100%;
+    margin-top: auto;
+}
+.btn-add:hover {
+    background: #cc0000;
+    color: white;
+}
+
+/* MODAL DE CATEGORÍA  */
+.modal-img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    background: #f8f8f8;
+    border-radius: 10px;
+    padding: 6px;
+    flex-shrink: 0;
+}
+.btn-seguir {
+    background: #fff;
+    border: 2px solid #1a0b3d;
+    color: #1a0b3d;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: all .2s;
+}
+.btn-seguir:hover { background: #1a0b3d; color: #fff; }
+.btn-ir-carro {
+    background: #1a0b3d;
+    color: #fff !important;
+    font-weight: 700;
+    border-radius: 30px;
+    transition: background 0.2s;
+}
+.btn-ir-carro:hover { background: #cc0000; }
+
+/*  PAGO-EXITOSO */
+.success-icon {
+    font-size: 80px;
+    color: #28a745;
+    animation: popIn 0.5s ease;
+}
+@keyframes popIn {
+    0%   { transform: scale(0); opacity: 0; }
+    80%  { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+.success-card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,.10);
+    max-width: 520px;
+    margin: 0 auto;
+}
+.btn-volver {
+    background: #1a0b3d;
+    color: #fff;
+    border-radius: 30px;
+    font-weight: 700;
+    padding: 12px 40px;
+    transition: background .2s;
+}
+.btn-volver:hover { background: #cc0000; color: #fff; }
+
+/*  Mapa Google */
+
+gmpx-store-locator {
+    --gmpx-fixed-panel-width-row-layout: 22em;
+    --gmpx-font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 15px;
+}
+
+
+#store-locator-container {
+    height: 650px !important;
+    max-width: 1300px;
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border: 1px solid #dee2e6;
+}
+
+/*PERFIL DE USUARIO */
+
+.perfil-hero {
+    background: linear-gradient(135deg, #1a0b3d 0%, #000000 100%);
+    padding: 50px 20px 40px;
+    border-bottom: 3px solid #cc0000;
+}
+
+.perfil-avatar-icon {
+    font-size: 80px;
+    color: #ffffff;
+    opacity: 0.9;
+}
+
+/* Tabs */
+.perfil-tabs {
+    border-bottom: 2px solid #dee2e6;
+}
+
+.perfil-tabs .nav-link {
+    color: #6c757d;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    padding: 10px 20px;
+    transition: color 0.2s;
+}
+
+.perfil-tabs .nav-link:hover {
+    color: #1a0b3d;
+}
+
+.perfil-tabs .nav-link.active {
+    color: #1a0b3d;
+    border-bottom: 3px solid #cc0000;
+    background: transparent;
+}
+
+/* Card */
+.perfil-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 32px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e9ecef;
+}
+
+.perfil-card-title {
+    font-weight: 700;
+    color: #1a0b3d;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+/* Inputs */
+.perfil-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #495057;
+}
+
+.perfil-input {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.perfil-input:focus {
+    border-color: #1a0b3d;
+    box-shadow: 0 0 0 3px rgba(26, 11, 61, 0.1);
+    outline: none;
+}
+
+.perfil-readonly {
+    background-color: #f8f9fa !important;
+    color: #6c757d !important;
+    cursor: not-allowed;
+}
+
+.perfil-hint {
+    font-size: 0.78rem;
+    color: #adb5bd;
+    margin-top: 4px;
+}
+
+/* Botón principal */
+.btn-perfil-primary {
+    background: #1a0b3d;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 11px 24px;
+    border: none;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+}
+
+.btn-perfil-primary:hover {
+    background: #cc0000;
+    color: #fff;
+}
+
+/* Órdenes del historial */
+.perfil-orden-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 24px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    border: 1px solid #e9ecef;
+    transition: box-shadow 0.2s;
+}
+
+.perfil-orden-card:hover {
+    box-shadow: 0 4px 20px rgba(26, 11, 61, 0.12);
+}
+
+.perfil-orden-id {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #1a0b3d;
+}
+
+.perfil-orden-item {
+    font-size: 0.9rem;
+    color: #495057;
+    padding: 4px 0;
+}
+
+.perfil-divider {
+    border-color: #f0f0f0;
+    margin: 12px 0;
+}
+
