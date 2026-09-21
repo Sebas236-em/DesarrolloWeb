@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import utp.phantom.phantom.model.Perfil;
 import utp.phantom.phantom.model.Usuario;
 import utp.phantom.phantom.service.PerfilService;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/perfil")
@@ -23,8 +24,11 @@ public class PerfilController {
         return (Usuario) session.getAttribute("usuarioActual");
     }
 
-    private void agregarAtributosComunes(Model model, Usuario usuario) {
+    private void agregarAtributosComunes(Model model, Usuario usuario, Perfil perfil) {
         model.addAttribute("usuarioNombre", usuario.getNombre().split(" ")[0]);
+        if (perfil.getAvatarUrl() != null && !perfil.getAvatarUrl().isBlank()) {
+            model.addAttribute("usuarioAvatar", perfil.getAvatarUrl());
+        }
     }
 
     @GetMapping
@@ -36,8 +40,7 @@ public class PerfilController {
 
         model.addAttribute("usuario", usuario);
         model.addAttribute("perfil", perfil);
-        agregarAtributosComunes(model, usuario);
-
+        agregarAtributosComunes(model, usuario, perfil);
         return "perfil";
     }
 
@@ -76,5 +79,22 @@ public class PerfilController {
         }
 
         return "redirect:/perfil?passwordCambiado=true";
+    }
+    @PostMapping("/avatar")
+    public String actualizarAvatar(@RequestParam("avatar") MultipartFile avatar, HttpSession session) {
+        Usuario usuario = getUsuarioAutenticado(session);
+        if (usuario == null) return "redirect:/login";
+
+        perfilService.actualizarAvatar(usuario, avatar);
+        return "redirect:/perfil?avatarActualizado=true";
+    }
+
+    @PostMapping("/avatar/eliminar")
+    public String eliminarAvatar(HttpSession session) {
+        Usuario usuario = getUsuarioAutenticado(session);
+        if (usuario == null) return "redirect:/login";
+
+        perfilService.eliminarAvatar(usuario);
+        return "redirect:/perfil?avatarEliminado=true";
     }
 }

@@ -32,7 +32,12 @@
                     <a th:href="@{/perfil}"
                        class="btn btn-outline-light rounded-pill fw-bold text-nowrap"
                        style="font-size:0.8rem; padding:5px 14px; letter-spacing:0.5px;">
-                        <i class="bi bi-person-fill me-1"></i> Mi Perfil
+                        <img th:if="${perfil.avatarUrl != null and !perfil.avatarUrl.isEmpty()}"
+                             th:src="@{${perfil.avatarUrl}}"
+                             class="nav-avatar-img me-1"
+                             alt="Foto de perfil"/>
+                        <i th:unless="${perfil.avatarUrl != null and !perfil.avatarUrl.isEmpty()}"
+                           class="bi bi-person-fill me-1"></i> Mi Perfil
                     </a>
                     <form th:action="@{/logout}" method="post" class="mb-0">
                         <button type="submit"
@@ -52,7 +57,59 @@
     <!-- HERO del perfil -->
     <div class="perfil-hero">
         <div class="container text-center">
-            <i class="bi bi-person-circle perfil-avatar-icon"></i>
+
+            <div class="perfil-avatar-wrapper">
+
+                <!-- Click aquí = VER la foto (o mensaje si no hay) -->
+                <div class="perfil-avatar-clickable" data-bs-toggle="modal" data-bs-target="#avatarModal" title="Ver foto de perfil">
+                    <img th:if="${perfil.avatarUrl != null and !perfil.avatarUrl.isEmpty()}"
+                         th:src="@{${perfil.avatarUrl}}"
+                         class="perfil-avatar-img"
+                         alt="Avatar del usuario"/>
+                    <i th:unless="${perfil.avatarUrl != null and !perfil.avatarUrl.isEmpty()}"
+                       class="bi bi-person-circle perfil-avatar-icon"></i>
+                </div>
+
+                <!-- Click aquí = CAMBIAR la foto -->
+                <form th:action="@{/perfil/avatar}" method="post" enctype="multipart/form-data" id="formAvatar">
+                    <label for="inputAvatar" class="perfil-avatar-camera-btn" title="Cambiar foto de perfil">
+                        <i class="bi bi-camera-fill"></i>
+                    </label>
+                    <input type="file" id="inputAvatar" name="avatar" accept="image/*" hidden
+                           onchange="document.getElementById('formAvatar').submit()"/>
+                </form>
+
+                <form th:if="${perfil.avatarUrl != null and !perfil.avatarUrl.isEmpty()}"
+                      th:action="@{/perfil/avatar/eliminar}" method="post" class="perfil-avatar-borrar-form">
+                    <button type="submit" class="perfil-avatar-borrar-btn" title="Quitar foto de perfil">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Modal para ver la foto de perfil -->
+            <div class="modal fade" id="avatarModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content bg-dark text-white">
+                        <div class="modal-header border-0">
+                            <h5 class="modal-title">Foto de perfil</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body text-center pb-4">
+                            <img th:if="${perfil.avatarUrl != null and !perfil.avatarUrl.isEmpty()}"
+                                 th:src="@{${perfil.avatarUrl}}"
+                                 class="img-fluid rounded"
+                                 style="max-height:70vh;"
+                                 alt="Foto de perfil"/>
+                            <div th:unless="${perfil.avatarUrl != null and !perfil.avatarUrl.isEmpty()}" class="py-5">
+                                <i class="bi bi-person-circle" style="font-size:4rem; opacity:.5;"></i>
+                                <p class="mt-3 mb-0 text-white-50">No hay foto de perfil</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <h1 class="fw-bold mt-3 mb-1 text-white" th:text="${usuario.nombre}">Nombre Usuario</h1>
             <p class="small text-white mb-0" th:text="${usuario.email}">email@ejemplo.com</p>
             <p class="small text-white" th:text="'Miembro desde ' + ${#temporals.format(usuario.fechaRegistro, 'MMMM yyyy')}">Miembro desde enero 2025</p>
@@ -64,6 +121,14 @@
         <!-- Alertas -->
         <div class="alert alert-success alert-dismissible fade show" th:if="${param.actualizado}" role="alert">
             <i class="bi bi-check-circle-fill me-2"></i> Datos actualizados correctamente.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        <div class="alert alert-success alert-dismissible fade show" th:if="${param.avatarActualizado}" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i> Foto de perfil actualizada.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        <div class="alert alert-success alert-dismissible fade show" th:if="${param.avatarEliminado}" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i> Foto de perfil eliminada.
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
         <div class="alert alert-success alert-dismissible fade show" th:if="${param.passwordCambiado}" role="alert">

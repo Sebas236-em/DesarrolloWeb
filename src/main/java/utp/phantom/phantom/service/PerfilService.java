@@ -8,6 +8,12 @@ import utp.phantom.phantom.model.Perfil;
 import utp.phantom.phantom.model.Usuario;
 import utp.phantom.phantom.repository.PerfilRepository;
 import utp.phantom.phantom.repository.UsuarioRepository;
+import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 @Service
 public class PerfilService {
@@ -36,6 +42,52 @@ public class PerfilService {
             nuevo.setAvatarUrl("");
             return perfilRepository.save(nuevo);
         });
+    }
+
+    public void actualizarAvatar(Usuario usuario, MultipartFile archivo) {
+        if (archivo == null || archivo.isEmpty()) {
+            throw new RuntimeException("Debes seleccionar una imagen");
+        }
+
+        Perfil perfil = obtenerOCrearPerfil(usuario);
+
+        try {
+            String extension = "";
+            String nombreOriginal = archivo.getOriginalFilename();
+            if (nombreOriginal != null && nombreOriginal.contains(".")) {
+                extension = nombreOriginal.substring(nombreOriginal.lastIndexOf("."));
+            }
+
+            String nombreArchivo = "avatar_" + usuario.getId() + "_" + System.currentTimeMillis() + extension;
+
+            Path carpetaDestino = Paths.get("uploads/avatars");
+            Files.createDirectories(carpetaDestino);
+
+            Path rutaCompleta = carpetaDestino.resolve(nombreArchivo);
+            Files.copy(archivo.getInputStream(), rutaCompleta, StandardCopyOption.REPLACE_EXISTING);
+
+            perfil.setAvatarUrl("/uploads/avatars/" + nombreArchivo);
+            perfilRepository.save(perfil);
+
+        } catch (IOException e) {
+            throw new RuntimeException("Error al guardar la imagen: " + e.getMessage());
+        }
+    }
+
+    public void eliminarAvatar(Usuario usuario) {
+        Perfil perfil = obtenerOCrearPerfil(usuario);
+
+        if (perfil.getAvatarUrl() != null && !perfil.getAvatarUrl().isEmpty()) {
+            try {
+                Path rutaArchivo = Paths.get(perfil.getAvatarUrl().replaceFirst("^/", ""));
+                Files.deleteIfExists(rutaArchivo);
+            } catch (IOException e) {
+                // si falla el borrado físico no es crítico, seguimos igual
+            }
+        }
+
+        perfil.setAvatarUrl("");
+        perfilRepository.save(perfil);
     }
 
 

@@ -46,7 +46,11 @@
                     <a th:href="@{/perfil}"
                        class="btn btn-outline-light rounded-pill fw-bold text-nowrap"
                        style="font-size: 0.8rem; padding: 5px 14px; letter-spacing: 0.5px;">
-                        <i class="bi bi-person-fill me-1"></i> Mi Perfil
+                        <img th:if="${usuarioAvatar != null}"
+                             th:src="@{${usuarioAvatar}}"
+                             class="nav-avatar-img me-1"
+                             alt="Foto de perfil"/>
+                        <i th:unless="${usuarioAvatar != null}" class="bi bi-person-fill me-1"></i> Mi Perfil
                     </a>
                     <form th:action="@{/logout}" method="post" class="mb-0">
                         <button type="submit"
